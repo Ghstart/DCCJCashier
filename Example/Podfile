@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DCCJCashier_Example' do
+  pod 'DCCJCashier', :path => '../'
+
+  target 'DCCJCashier_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
