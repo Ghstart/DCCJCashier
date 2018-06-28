@@ -1,0 +1,6 @@
+framework module DCCJCashier {
+  umbrella header "DCCJCashier-umbrella.h"
+
+  export *
+  module * { export * }
+}
