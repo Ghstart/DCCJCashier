@@ -7,28 +7,69 @@
 //
 
 import Foundation
-//import DCCJNetwork
+import DCCJNetwork
+import DCCJUser
 
-public final class DCCJCashier: NSObject {
+public final class DCCJCashier: NSObject, DCCJNetworkDelegate, DCCJNetworkDataSource {
     
-    open static let shared = DCCJCashier()
-    
+    public static let shared = DCCJCashier()
     private override init() {}
     
-    public func testObject() -> String { return "" }
+    public func send(url u: String, method m: Obj_RequestMethods, with d: Dictionary<String, Any> = [:], callBack: @escaping ([String: Any]?, NSError?) -> Void) {
+        let r = CashierRequests.request(url: u, method: m.rawValue, data: d)
+        _request(q: r, callBack: callBack)
+    }
+    
+    private func _request(q: CashierRequests, callBack: @escaping ([String: Any]?, NSError?) -> Void) {
+        let net = DCCJNetwork.shared
+        net.delegate    = self
+        net.dataSource  = self
+        net.requestBy(q) { (data, dataManagerError) in callBack(data, dataManagerError?.error()) }
+    }
+    
+    /*Error Code = 201*/
+    public func errorCodeEqualTo201() {
+        DCCJUser.setToken("", callback: nil)
+    }
+    
+    /*Return Header Fields*/
+    public func customHttpHeaders() -> Dictionary<String, String> {
+        return ["accessToken": DCCJUser.getToken()]
+    }
 }
 
-//public class DCCJCashier: NSObject {
-//    public static let shared = DCCJCashier()
-//    private override init() {}
-//
-//    public func config() {
-//        DCCJNetwork.shared.config(host: "host", logKey: "ket") { (md) -> String in
-//            return ""
-//        }
-//    }
-//
-//    public func showCashier() {
-//        print("DCCJCashier...")
-//    }
-//}
+@objc public enum Obj_RequestMethods: Int {
+    case GET = 0
+    case POST
+}
+
+enum CashierRequests {
+    case request(url: String, method: Int, data: [String: Any])
+}
+
+extension CashierRequests: Request {
+    public var path: String {
+        switch self {
+        case .request(let url, _, _):
+            return url
+        }
+    }
+    
+    public var method: HTTPMethod {
+        switch self {
+        case .request(_, let method, _):
+            if method == 0 {
+                return .GET
+            } else {
+                return .POST
+            }
+        }
+    }
+    
+    public var paramters: [String : Any] {
+        switch self {
+        case .request(_, _, let data):
+            return data
+        }
+    }
+}
