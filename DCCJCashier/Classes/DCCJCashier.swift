@@ -15,16 +15,30 @@ public final class DCCJCashier: NSObject, DCCJNetworkDelegate, DCCJNetworkDataSo
     public static let shared = DCCJCashier()
     private override init() {}
     
-    public func send(url u: String, method m: Obj_RequestMethods, with d: Dictionary<String, Any> = [:], callBack: @escaping ([String: Any]?, NSError?) -> Void) {
-        let r = CashierRequests.request(url: u, method: m.rawValue, data: d)
-        _request(q: r, callBack: callBack)
+    public func request(type t: ObjcCashierRequests,
+                        with d: Dictionary<String, Any> = [:],
+                        callBack: @escaping (Any?, NSError?) -> Void) {
+        self._request(q: CashierRequests.send(type: t, data: d), callBack: callBack)
     }
     
-    private func _request(q: CashierRequests, callBack: @escaping ([String: Any]?, NSError?) -> Void) {
+    private func _request(q: CashierRequests, callBack: @escaping (Codable?, NSError?) -> Void) {
         let net = DCCJNetwork.shared
         net.delegate    = self
         net.dataSource  = self
-        net.requestBy(q) { (data, dataManagerError) in callBack(data, dataManagerError?.error()) }
+        switch q {
+        case .send(let type, _):
+            switch type {
+            case .bindCardAndToSupportBankCard:
+                DCCJNetwork.shared.requestBy(q) { (responseData: SupportBankCardResponse?, e) in
+                    print(responseData ?? "")
+                    callBack(responseData, e?.error())
+                }
+            default:
+                DCCJNetwork.shared.requestBy(q) { (responseData: SupportBankCardResponse?, error) in
+                    
+                }
+            }
+        }
     }
     
     /*Error Code = 201*/
@@ -38,38 +52,56 @@ public final class DCCJCashier: NSObject, DCCJNetworkDelegate, DCCJNetworkDataSo
     }
 }
 
-@objc public enum Obj_RequestMethods: Int {
-    case GET = 0
-    case POST
+@objc public enum ObjcCashierRequests: Int {
+    case initCashier
+    case bindCardAndToSupportBankCard
+    case bindCardAndCheckCard
 }
 
 enum CashierRequests {
-    case request(url: String, method: Int, data: [String: Any])
+    case send(type: ObjcCashierRequests, data: [String: Any])
 }
 
 extension CashierRequests: Request {
+    var response: Codable {
+        return SupportBankCardResponse.Type.self as! Codable
+    }
+
+    public var host: String {
+        return DCCJNetwork.shared.hostMaps[.cashier_staging]!
+    }
+    
     public var path: String {
         switch self {
-        case .request(let url, _, _):
-            return url
+        case .send(let type, _):
+            switch type {
+            case .initCashier:
+                return "/bankList"
+            case .bindCardAndToSupportBankCard:
+                return "/supportedBankCard"
+            case .bindCardAndCheckCard:
+                return ""
+            }
         }
     }
     
     public var method: HTTPMethod {
         switch self {
-        case .request(_, let method, _):
-            if method == 0 {
-                return .GET
-            } else {
+        case .send(let type, _):
+            switch type {
+            case .initCashier, .bindCardAndCheckCard:
                 return .POST
+            case .bindCardAndToSupportBankCard:
+                return .GET
             }
         }
     }
     
     public var paramters: [String : Any] {
         switch self {
-        case .request(_, _, let data):
+        case .send(_, let data):
             return data
         }
     }
 }
+

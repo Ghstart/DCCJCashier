@@ -1,8 +1,8 @@
 PODS:
-  - DCCJCashier (0.1.2):
-    - DCCJNetwork (~> 0.2.2)
+  - DCCJCashier (0.1.4):
+    - DCCJNetwork (~> 0.2.4)
     - DCCJUser (~> 0.1.0)
-  - DCCJNetwork (0.2.2)
+  - DCCJNetwork (0.2.4)
   - DCCJUser (0.1.0)
 
 DEPENDENCIES:
@@ -18,8 +18,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: 42efa543364e532fd37df15f24ebd59899435575
-  DCCJNetwork: 84349bc1fd3c81b53f40d905b3b2da4b8deb9eac
+  DCCJCashier: 5832897168d0e32872db3407c1121110c1a73312
+  DCCJNetwork: cccb45843822ea4f17d8535c27e66caffb52bc4c
   DCCJUser: 23c87a639af0815e14af5957463606482d2be934
 
 PODFILE CHECKSUM: 7cca68eccd087dc22bb31fa1e700850fc8e3342f
