@@ -8,12 +8,14 @@
 
 import Foundation
 import DCCJNetwork
-import DCCJUser
 
-public final class DCCJCashier: NSObject, DCCJNetworkDelegate, DCCJNetworkDataSource {
+public final class DCCJCashier: NSObject {
     
-    public static let shared = DCCJCashier()
-    private override init() {}
+    private let network: DCCJNetwork
+    
+    init(network: DCCJNetwork) {
+        self.network = network
+    }
     
     public func request(type t: ObjcCashierRequests,
                         with d: Dictionary<String, Any> = [:],
@@ -22,33 +24,20 @@ public final class DCCJCashier: NSObject, DCCJNetworkDelegate, DCCJNetworkDataSo
     }
     
     private func _request(q: CashierRequests, callBack: @escaping (Codable?, NSError?) -> Void) {
-        let net = DCCJNetwork.shared
-        net.delegate    = self
-        net.dataSource  = self
         switch q {
         case .send(let type, _):
             switch type {
             case .bindCardAndToSupportBankCard:
-                DCCJNetwork.shared.requestBy(q) { (responseData: SupportBankCardResponse?, e) in
+                self.network.requestBy(q) { (responseData: SupportBankCardResponse?, e) in
                     print(responseData ?? "")
                     callBack(responseData, e?.error())
                 }
             default:
-                DCCJNetwork.shared.requestBy(q) { (responseData: SupportBankCardResponse?, error) in
+                self.network.requestBy(q) { (responseData: SupportBankCardResponse?, error) in
                     
                 }
             }
         }
-    }
-    
-    /*Error Code = 201*/
-    public func errorCodeEqualTo201() {
-        DCCJUser.setToken("", callback: nil)
-    }
-    
-    /*Return Header Fields*/
-    public func customHttpHeaders() -> Dictionary<String, String> {
-        return ["accessToken": DCCJUser.getToken()]
     }
 }
 
