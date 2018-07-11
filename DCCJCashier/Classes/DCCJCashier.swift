@@ -9,6 +9,7 @@
 import Foundation
 import DCCJNetwork
 
+
 public final class DCCJCashier: NSObject {
     
     private let network: DCCJNetwork
@@ -32,6 +33,27 @@ public final class DCCJCashier: NSObject {
                     print(responseData ?? "")
                     callBack(responseData, e?.error())
                 }
+            case .bindCardAndCheckCard:
+                self.network.requestBy(q) { (responseData: CheckCardResponse?, e) in
+                    print(responseData ?? "")
+                    callBack(responseData, e?.error())
+                }
+            case .requestBindCard:
+                self.network.requestBy(q) { (responseData: RequestBindCard?, e) in
+                    print(responseData ?? "")
+                    callBack(responseData, e?.error())
+                }
+            case .resendMsgCode:
+                self.network.requestBy(q) { (responseData: ResendVerifyCode?, e) in
+                    print(responseData ?? "")
+                    callBack(responseData, e?.error())
+                }
+            case .confirmBindCard:
+                self.network.requestBy(q) { (responseData: ConfirmBindCard?, e) in
+                    print(responseData ?? "")
+                    callBack(responseData, e?.error())
+                }
+                
             default:
                 self.network.requestBy(q) { (responseData: SupportBankCardResponse?, error) in
                     
@@ -45,6 +67,9 @@ public final class DCCJCashier: NSObject {
     case initCashier
     case bindCardAndToSupportBankCard
     case bindCardAndCheckCard
+    case requestBindCard
+    case resendMsgCode
+    case confirmBindCard
 }
 
 enum CashierRequests {
@@ -57,6 +82,15 @@ extension CashierRequests: Request {
     }
 
     public var host: String {
+//        switch self {
+//        case .send(let type, _):
+//            switch type {
+//            case .bindCardAndCheckCard:
+//                return DCCJNetwork.shared.hostMaps[.staging]!
+//            default:
+//                return DCCJNetwork.shared.hostMaps[.cashier_staging]!
+//            }
+//        }
         return DCCJNetwork.shared.hostMaps[.cashier_staging]!
     }
     
@@ -69,7 +103,14 @@ extension CashierRequests: Request {
             case .bindCardAndToSupportBankCard:
                 return "/supportedBankCard"
             case .bindCardAndCheckCard:
-                return ""
+                return "/checkCard"
+            case .requestBindCard:
+                return "/bindingCard"
+            case .resendMsgCode:
+                return "/sendSms"
+            case .confirmBindCard:
+                return "/bindingCardConfirm"
+                
             }
         }
     }
@@ -78,10 +119,10 @@ extension CashierRequests: Request {
         switch self {
         case .send(let type, _):
             switch type {
-            case .initCashier, .bindCardAndCheckCard:
-                return .POST
             case .bindCardAndToSupportBankCard:
                 return .GET
+            default:
+                return .POST
             }
         }
     }

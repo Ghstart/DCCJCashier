@@ -7,26 +7,29 @@
 //
 
 import Foundation
+import DCCJNetwork
 
-@objc public class SupportBankCardResponse: NSObject, Codable {
-    let result: SupportBankCard
+@objc public class SupportBankCardResponse: NSObject, Codable, DCCJResponseCodeDataSource {
+    let result: SupportBankCard?
     let success: Bool
-    init(r: SupportBankCard, success: Bool) {
+    let message: String?
+    init(r: SupportBankCard?, success: Bool, message: String?) {
         self.result = r
         self.success = success
+        self.message = message
     }
 }
 
 @objc public class SupportBankCard: NSObject, Codable {
     let authStatus: Int
-    let bankInfos: [BankInfo]
-    init(au: Int, bankInfos: [BankInfo]) {
+    let bankInfos: [DCSingleBindBankInfos]
+    init(au: Int, bankInfos: [DCSingleBindBankInfos]) {
         self.authStatus = au
         self.bankInfos = bankInfos
     }
 }
 
-@objc public class BankInfo: NSObject, Codable {
+@objc public class DCSingleBindBankInfos: NSObject, Codable {
     let validDate: String?
     let cvv: String?
     let idCard: String
