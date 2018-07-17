@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import DCCJNetwork
 
-@objc public class ConfirmBindCard: NSObject, Codable, DCCJResponseCodeDataSource {
+@objc public class ConfirmBindCard: NSObject, Codable {
     let success: Bool
     let message: String?
     init(success: Bool, message: String?) {

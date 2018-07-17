@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import DCCJNetwork
 
-@objc public class ResendVerifyCode: NSObject, Codable, DCCJResponseCodeDataSource {
+@objc public class ResendVerifyCode: NSObject, Codable {
     let result: ResendMsgCode?
     let success: Bool
     let message: String?

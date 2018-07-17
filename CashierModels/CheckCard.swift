@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import DCCJNetwork
 
-@objc public class CheckCardResponse: NSObject, Codable, DCCJResponseCodeDataSource {
+@objc public class CheckCardResponse: NSObject, Codable {
     let result: CheckCard?
     let success: Bool
     let message: String?

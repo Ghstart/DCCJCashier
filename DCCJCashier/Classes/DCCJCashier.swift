@@ -28,35 +28,95 @@ public final class DCCJCashier: NSObject {
         switch q {
         case .send(let type, _):
             switch type {
-            case .bindCardAndToSupportBankCard:
-                self.network.requestBy(q) { (responseData: SupportBankCardResponse?, e) in
-                    print(responseData ?? "")
-                    callBack(responseData, e?.error())
+            case .requestInitCashier:
+                self.network.requestBy(q) { (result: Result<InitCashierBankCardsResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
-            case .bindCardAndCheckCard:
-                self.network.requestBy(q) { (responseData: CheckCardResponse?, e) in
-                    print(responseData ?? "")
-                    callBack(responseData, e?.error())
+            case .requestCashierSupportBankCards:
+                self.network.requestBy(q) { (result: Result<CashierSuppoerBankCardsResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
+                }
+            case .requestBindCardAndToSupportBankCard:
+                self.network.requestBy(q) { (result: Result<SupportBankCardResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
+                }
+            case .requestBindCardAndCheckCard:
+                self.network.requestBy(q) { (result: Result<CheckCardResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
             case .requestBindCard:
-                self.network.requestBy(q) { (responseData: RequestBindCard?, e) in
-                    print(responseData ?? "")
-                    callBack(responseData, e?.error())
+                self.network.requestBy(q) { (result: Result<RequestBindCard, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
             case .resendMsgCode:
-                self.network.requestBy(q) { (responseData: ResendVerifyCode?, e) in
-                    print(responseData ?? "")
-                    callBack(responseData, e?.error())
+                self.network.requestBy(q) { (result: Result<ResendVerifyCode, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
             case .confirmBindCard:
-                self.network.requestBy(q) { (responseData: ConfirmBindCard?, e) in
-                    print(responseData ?? "")
-                    callBack(responseData, e?.error())
+                self.network.requestBy(q) { (result: Result<ConfirmBindCard, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
-                
-            default:
-                self.network.requestBy(q) { (responseData: SupportBankCardResponse?, error) in
-                    
+            case .requestCheckPayPassword:
+                self.network.requestBy(q) { (result: Result<CheckPayPasswordResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
+                }
+            case .requestToPay:
+                self.network.requestBy(q) { (result: Result<StartToPayResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
+                }
+            case .requestToSurePay:
+                self.network.requestBy(q) { (result: Result<SureToPayResponse, DataManagerError>) in
+                    switch result {
+                    case .success(let response) :
+                        callBack(response, nil)
+                    case .failure(let e) :
+                        callBack(nil, e as NSError)
+                    }
                 }
             }
         }
@@ -64,9 +124,13 @@ public final class DCCJCashier: NSObject {
 }
 
 @objc public enum ObjcCashierRequests: Int {
-    case initCashier
-    case bindCardAndToSupportBankCard
-    case bindCardAndCheckCard
+    case requestInitCashier
+    case requestCashierSupportBankCards
+    case requestBindCardAndToSupportBankCard
+    case requestCheckPayPassword
+    case requestToPay
+    case requestToSurePay
+    case requestBindCardAndCheckCard
     case requestBindCard
     case resendMsgCode
     case confirmBindCard
@@ -82,15 +146,6 @@ extension CashierRequests: Request {
     }
 
     public var host: String {
-//        switch self {
-//        case .send(let type, _):
-//            switch type {
-//            case .bindCardAndCheckCard:
-//                return DCCJNetwork.shared.hostMaps[.staging]!
-//            default:
-//                return DCCJNetwork.shared.hostMaps[.cashier_staging]!
-//            }
-//        }
         return DCCJNetwork.shared.hostMaps[.cashier_staging]!
     }
     
@@ -98,11 +153,19 @@ extension CashierRequests: Request {
         switch self {
         case .send(let type, _):
             switch type {
-            case .initCashier:
+            case .requestInitCashier:
                 return "/bankList"
-            case .bindCardAndToSupportBankCard:
+            case .requestCashierSupportBankCards:
+                return "/supportBanks"
+            case .requestBindCardAndToSupportBankCard:
                 return "/supportedBankCard"
-            case .bindCardAndCheckCard:
+            case .requestCheckPayPassword:
+                return "/payPwdCheck"
+            case .requestToPay:
+                return "/payAction"
+            case .requestToSurePay:
+                return "/payConfirm"
+            case .requestBindCardAndCheckCard:
                 return "/checkCard"
             case .requestBindCard:
                 return "/bindingCard"
@@ -110,7 +173,6 @@ extension CashierRequests: Request {
                 return "/sendSms"
             case .confirmBindCard:
                 return "/bindingCardConfirm"
-                
             }
         }
     }
@@ -119,7 +181,7 @@ extension CashierRequests: Request {
         switch self {
         case .send(let type, _):
             switch type {
-            case .bindCardAndToSupportBankCard:
+            case .requestBindCardAndToSupportBankCard:
                 return .GET
             default:
                 return .POST

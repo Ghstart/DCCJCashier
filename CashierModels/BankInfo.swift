@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import DCCJNetwork
 
-@objc public class SupportBankCardResponse: NSObject, Codable, DCCJResponseCodeDataSource {
+@objc public class SupportBankCardResponse: NSObject, Codable {
     let result: SupportBankCard?
     let success: Bool
     let message: String?
