@@ -11,11 +11,7 @@ import DCCJNetwork
 
 public final class DCCJCashier: NSObject {
     
-    private let network: DCCJNetwork
-
-    public init(network: DCCJNetwork) {
-        self.network = network
-    }
+    public let network: DCCJNetwork = DCCJNetwork.shared
     
     public func request(type t: ObjcCashierRequests,
                         with d: Dictionary<String, Any> = [:],
