@@ -9,9 +9,25 @@
 import Foundation
 import DCCJNetwork
 
-public final class DCCJCashier: NSObject {
+public final class DCCJCashier: NSObject, DCCJNetworkDataSource, DCCJNetworkDelegate {
+    public func customHttpHeaders() -> Dictionary<String, String> {
+        return self.customHttpHeadersCallBack()
+    }
+    
+    public func errorCodeEqualTo201() {
+        self.errorCodeEqualTo201CallBack()
+    }
+    
+    public var customHttpHeadersCallBack: () -> Dictionary<String, String> = {[:]}
+    public var errorCodeEqualTo201CallBack: () -> Void = {}
     
     public let network: DCCJNetwork = DCCJNetwork.shared
+    
+    override init() {
+        super.init()
+        self.network.delegate = self
+        self.network.dataSource = self
+    }
     
     public func request(type t: ObjcCashierRequests,
                         with d: Dictionary<String, Any> = [:],
