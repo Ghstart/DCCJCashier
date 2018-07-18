@@ -8,6 +8,7 @@
 
 import UIKit
 import DCCJCashier
+import DCCJNetwork
 
 class ViewController: UIViewController {
 

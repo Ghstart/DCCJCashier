@@ -9,11 +9,10 @@
 import Foundation
 import DCCJNetwork
 
-
 public final class DCCJCashier: NSObject {
     
     private let network: DCCJNetwork
-    
+
     public init(network: DCCJNetwork) {
         self.network = network
     }
