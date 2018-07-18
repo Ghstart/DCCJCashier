@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DCCJUser.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-DCCJCashier_Example.xcscheme</key>
 		<dict>
 			<key>isShown</key>

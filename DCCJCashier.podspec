@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DCCJCashier'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'This is cashier module'
 
 # This description is used to generate tags and improve search results.
@@ -39,5 +39,4 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'DCCJNetwork', '~> 0.2.7'
-  s.dependency 'DCCJUser', '~> 0.1.1'
 end
