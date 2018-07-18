@@ -23,7 +23,7 @@ public final class DCCJCashier: NSObject, DCCJNetworkDataSource, DCCJNetworkDele
     
     public let network: DCCJNetwork = DCCJNetwork.shared
     
-    override init() {
+    public override init() {
         super.init()
         self.network.delegate = self
         self.network.dataSource = self
