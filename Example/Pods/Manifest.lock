@@ -1,7 +1,7 @@
 PODS:
-  - DCCJCashier (0.2.7):
-    - DCCJNetwork (~> 0.2.9)
-  - DCCJNetwork (0.2.9)
+  - DCCJCashier (0.2.9):
+    - DCCJNetwork (~> 0.3.0)
+  - DCCJNetwork (0.3.0)
 
 DEPENDENCIES:
   - DCCJCashier (from `../`)
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: b6ac45af4afe85f592f4fd586a7be276259eddd1
-  DCCJNetwork: 873b6afd3a30ce1952e485e9bc3174739d454cfc
+  DCCJCashier: 0eb37cad5fec8529974c4245870cc95b52486aa5
+  DCCJNetwork: ed3fe3b16218b210e3cde08e76b45a369c28fd89
 
 PODFILE CHECKSUM: 7cca68eccd087dc22bb31fa1e700850fc8e3342f
 
