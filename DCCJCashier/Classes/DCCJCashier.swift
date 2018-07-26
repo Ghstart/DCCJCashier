@@ -9,24 +9,12 @@
 import Foundation
 import DCCJNetwork
 
-public final class DCCJCashier: NSObject, DCCJNetworkDataSource, DCCJNetworkDelegate {
-    public func customHttpHeaders() -> Dictionary<String, String> {
-        return self.customHttpHeadersCallBack()
-    }
-    
-    public func errorCodeEqualTo201() {
-        self.errorCodeEqualTo201CallBack()
-    }
-    
-    public var customHttpHeadersCallBack: () -> Dictionary<String, String> = {[:]}
-    public var errorCodeEqualTo201CallBack: () -> Void = {}
+public final class DCCJCashier: NSObject {
     
     public let network: DCCJNetwork = DCCJNetwork.shared
     
     public override init() {
         super.init()
-        self.network.delegate = self
-        self.network.dataSource = self
     }
     
     public func request(type t: ObjcCashierRequests,
@@ -132,6 +120,10 @@ public final class DCCJCashier: NSObject, DCCJNetworkDataSource, DCCJNetworkDele
             }
         }
     }
+}
+
+public enum DCCJCashierUIPages {
+    case DCCJUIBankCardsList
 }
 
 @objc public enum ObjcCashierRequests: Int {
