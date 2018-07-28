@@ -1,6 +1,5 @@
 PODS:
-  - DCCJCashier (0.3.1):
-    - DCCJConfig (~> 0.1.0)
+  - DCCJCashier (0.3.3):
     - DCCJNavigator (~> 0.1.1)
     - DCCJNetwork (~> 0.3.3)
   - DCCJConfig (0.1.0)
@@ -22,7 +21,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: 2f6de36cb71fe13f95dd0ed1aeab3e1f5d476c08
+  DCCJCashier: 28c2b67ca060101043ee3f17c6e37a8289a141f4
   DCCJConfig: f5406d0f7142f052fab836b329e2e147489999d2
   DCCJNavigator: 73778325f72cc483f9c43ec09fcdf8fedb98affc
   DCCJNetwork: 91f06c17d090098f32b6339797f4d67138768b0e

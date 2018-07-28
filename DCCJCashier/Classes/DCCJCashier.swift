@@ -27,8 +27,15 @@ public final class DCCJCashier: NSObject {
         self.cashierUI.uiManagerPresent(page: page, on: vc)
     }
 
-    public func request<D: Codable>(_ r: CashierRequests, handler: @escaping (Result<D, DataManagerError>) -> Void) -> URLSessionDataTask? {
-        return self.network.requestBy(r, completion: handler)
+    public func request<D: Codable>(_ r: CashierRequests, handler: @escaping (Result<D, NSError>) -> Void) -> URLSessionDataTask? {
+        return self.network.requestBy(r, completion: { (result: Result<D, DataManagerError>) in
+            switch result {
+            case .success(let v):
+                handler(.success(v))
+            case .failure(let e as NSError):
+                handler(.failure(e))
+            }
+        })
     }
     /*
     public func request<Value: Codable>(_ r: CashierRequests, handler: @escaping (Value?, DataManagerError?) -> Void) {
