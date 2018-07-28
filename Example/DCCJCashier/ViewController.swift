@@ -9,11 +9,21 @@
 import UIKit
 import DCCJCashier
 import DCCJNetwork
+import DCCJConfig
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func showBankCardLists(_ sender: Any) {
+        let cashier = DCCJCashier()
+        /*present*/
+        cashier.present(page: .bankCardLists, on: self)
+        /*navigator*/
+        cashier.navigator(page: .bankCardLists, on: self.navigationController)
+        /*request*/
+        _ = cashier.request(.send(type: .requestToPay, data: Dictionary<String, Any>())) { (result: Result<CashierSuppoerBankCardsResponse, DataManagerError>) in
+            
+        }
+
     }
 }
 

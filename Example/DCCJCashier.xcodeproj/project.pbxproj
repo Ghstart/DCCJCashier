@@ -278,11 +278,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DCCJCashier_Example/Pods-DCCJCashier_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DCCJCashier/DCCJCashier.framework",
+				"${BUILT_PRODUCTS_DIR}/DCCJConfig/DCCJConfig.framework",
+				"${BUILT_PRODUCTS_DIR}/DCCJNavigator/DCCJNavigator.framework",
 				"${BUILT_PRODUCTS_DIR}/DCCJNetwork/DCCJNetwork.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCCJCashier.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCCJConfig.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCCJNavigator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCCJNetwork.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

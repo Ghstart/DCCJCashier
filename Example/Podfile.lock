@@ -1,13 +1,20 @@
 PODS:
-  - DCCJCashier (0.3.0):
-    - DCCJNetwork (~> 0.3.1)
-  - DCCJNetwork (0.3.1)
+  - DCCJCashier (0.3.1):
+    - DCCJConfig (~> 0.1.0)
+    - DCCJNavigator (~> 0.1.1)
+    - DCCJNetwork (~> 0.3.3)
+  - DCCJConfig (0.1.0)
+  - DCCJNavigator (0.1.1)
+  - DCCJNetwork (0.3.3):
+    - DCCJConfig (~> 0.1.0)
 
 DEPENDENCIES:
   - DCCJCashier (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DCCJConfig
+    - DCCJNavigator
     - DCCJNetwork
 
 EXTERNAL SOURCES:
@@ -15,8 +22,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: 3fe29dfe39c8426ce275fe50aa6aa06c89a40334
-  DCCJNetwork: 052b903304cf684aba5ddfcedbaa6f05cfde3780
+  DCCJCashier: 2f6de36cb71fe13f95dd0ed1aeab3e1f5d476c08
+  DCCJConfig: f5406d0f7142f052fab836b329e2e147489999d2
+  DCCJNavigator: 73778325f72cc483f9c43ec09fcdf8fedb98affc
+  DCCJNetwork: 91f06c17d090098f32b6339797f4d67138768b0e
 
 PODFILE CHECKSUM: 7cca68eccd087dc22bb31fa1e700850fc8e3342f
 
