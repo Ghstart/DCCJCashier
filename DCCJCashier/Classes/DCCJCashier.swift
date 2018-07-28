@@ -8,15 +8,43 @@
 
 import Foundation
 import DCCJNetwork
+import DCCJConfig
 
 public final class DCCJCashier: NSObject {
     
     public let network: DCCJNetwork = DCCJNetwork.shared
+    private lazy var cashierUI: DCCJCashierUIManager = DCCJCashierUIManager()
     
     public override init() {
         super.init()
     }
     
+    public func navigator(page: CashierPages, on nav: UINavigationController? = nil) {
+        return self.cashierUI.uiManagerNavigator(page: page, on: nav)
+    }
+    
+    public func present(page: CashierPages, on vc: UIViewController) {
+        self.cashierUI.uiManagerPresent(page: page, on: vc)
+    }
+
+    public func request<D: Codable>(_ r: CashierRequests, handler: @escaping (Result<D, DataManagerError>) -> Void) -> URLSessionDataTask? {
+        return self.network.requestBy(r, completion: handler)
+    }
+    /*
+    public func request<Value: Codable>(_ r: CashierRequests, handler: @escaping (Value?, DataManagerError?) -> Void) {
+        
+        self.network.requestBy(r) {  (result: Result<Value, DataManagerError>) in
+            switch result {
+            case .success(let response) :
+                handler(response, nil)
+            case .failure(let e) :
+                handler(nil, e)
+            }
+        }
+    }
+    */
+    
+    /*
     public func request(type t: ObjcCashierRequests,
                         with d: Dictionary<String, Any> = [:],
                         callBack: @escaping (Any?, NSError?) -> Void) {
@@ -120,27 +148,11 @@ public final class DCCJCashier: NSObject {
             }
         }
     }
+    */
 }
 
-public enum DCCJCashierUIPages {
-    case DCCJUIBankCardsList
-}
-
-@objc public enum ObjcCashierRequests: Int {
-    case requestInitCashier
-    case requestCashierSupportBankCards
-    case requestBindCardAndToSupportBankCard
-    case requestCheckPayPassword
-    case requestToPay
-    case requestToSurePay
-    case requestBindCardAndCheckCard
-    case requestBindCard
-    case resendMsgCode
-    case confirmBindCard
-}
-
-enum CashierRequests {
-    case send(type: ObjcCashierRequests, data: [String: Any])
+public enum CashierRequests {
+    case send(type: CashierRequestTypes, data: [String: Any])
 }
 
 extension CashierRequests: Request {
