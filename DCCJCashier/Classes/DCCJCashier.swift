@@ -30,9 +30,9 @@ public final class DCCJCashier: NSObject {
     public func request<Value: Codable>(with r: CashierRequests) -> (data: Future<Value>, task: URLSessionDataTask?) {
         let (d, t) = self.network.request(with: r)
         
-        let data: Future<Value> = d.unboxed()
+        let unboxData: Future<Value> = d.unboxed()
         
-        return (data, t)
+        return (data: unboxData, task: t)
         }
     }
 
