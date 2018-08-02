@@ -1,11 +1,15 @@
 PODS:
-  - DCCJCashier (0.3.3):
+  - DCCJCashier (0.3.4):
     - DCCJNavigator (~> 0.1.1)
-    - DCCJNetwork (~> 0.3.3)
-  - DCCJConfig (0.1.0)
+    - DCCJNetwork (~> 0.3.5)
+  - DCCJConfig (0.1.7):
+    - DCCJConfig/DataManagerError (= 0.1.7)
+    - DCCJConfig/Result (= 0.1.7)
+  - DCCJConfig/DataManagerError (0.1.7)
+  - DCCJConfig/Result (0.1.7)
   - DCCJNavigator (0.1.1)
-  - DCCJNetwork (0.3.3):
-    - DCCJConfig (~> 0.1.0)
+  - DCCJNetwork (0.3.5):
+    - DCCJConfig (~> 0.1.7)
 
 DEPENDENCIES:
   - DCCJCashier (from `../`)
@@ -21,10 +25,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: 28c2b67ca060101043ee3f17c6e37a8289a141f4
-  DCCJConfig: f5406d0f7142f052fab836b329e2e147489999d2
+  DCCJCashier: 6d74012f3673e1b08b28232dbe3eca949c0a2f48
+  DCCJConfig: 75489bbacd3d721bf9a995c1081fc40f62295e14
   DCCJNavigator: 73778325f72cc483f9c43ec09fcdf8fedb98affc
-  DCCJNetwork: 91f06c17d090098f32b6339797f4d67138768b0e
+  DCCJNetwork: 6da503ac0feca2738fc81ea980baa28baeaa61e8
 
 PODFILE CHECKSUM: 7cca68eccd087dc22bb31fa1e700850fc8e3342f
 

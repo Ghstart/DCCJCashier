@@ -20,9 +20,9 @@ class ViewController: UIViewController {
         /*navigator*/
         cashier.navigator(page: .bankCardLists, on: self.navigationController)
         /*request*/
-        _ = cashier.request(.send(type: .requestToPay, data: Dictionary<String, Any>()), handler: { (result: Result<CashierSuppoerBankCardsResponse, NSError>) in
+        cashier.request(with: .send(type: .requestToPay, data: Dictionary<String, Any>())).data.observe { (result: Result<CashierSuppoerBankCardsResponse>) in
             
-        })
+        }
     }
 }
 
