@@ -13,18 +13,9 @@ import DCCJConfig
 public final class DCCJCashier: NSObject {
     
     public let network: DCCJNetwork = DCCJNetwork.shared
-    private lazy var cashierUI: DCCJCashierUIManager = DCCJCashierUIManager()
     
     public override init() {
         super.init()
-    }
-    
-    public func navigator(page: CashierPages, on nav: UINavigationController? = nil) {
-        return self.cashierUI.uiManagerNavigator(page: page, on: nav)
-    }
-    
-    public func present(page: CashierPages, on vc: UIViewController) {
-        self.cashierUI.uiManagerPresent(page: page, on: vc)
     }
     
     public func request<Value: Codable>(with r: CashierRequests) -> (data: Future<Value>, task: URLSessionDataTask?) {
