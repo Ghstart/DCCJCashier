@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A855AB37771D26BA7FF50D4E8C221D2"
-               BuildableName = "Pods_DCCJCashier_Tests.framework"
-               BlueprintName = "Pods-DCCJCashier_Tests"
+               BlueprintIdentifier = "58C4790EC04031AD7E849CEB12F45806"
+               BuildableName = "SwiftyBeaver.framework"
+               BlueprintName = "SwiftyBeaver"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A855AB37771D26BA7FF50D4E8C221D2"
-            BuildableName = "Pods_DCCJCashier_Tests.framework"
-            BlueprintName = "Pods-DCCJCashier_Tests"
+            BlueprintIdentifier = "58C4790EC04031AD7E849CEB12F45806"
+            BuildableName = "SwiftyBeaver.framework"
+            BlueprintName = "SwiftyBeaver"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -1,13 +1,15 @@
 PODS:
-  - DCCJCashier (0.3.7):
-    - DCCJNetwork (~> 0.3.5)
-  - DCCJConfig (0.1.7):
-    - DCCJConfig/DataManagerError (= 0.1.7)
-    - DCCJConfig/Result (= 0.1.7)
-  - DCCJConfig/DataManagerError (0.1.7)
-  - DCCJConfig/Result (0.1.7)
-  - DCCJNetwork (0.3.5):
-    - DCCJConfig (~> 0.1.7)
+  - DCCJCashier (0.3.8):
+    - DCCJNetwork (~> 0.3.7)
+  - DCCJConfig (0.1.8):
+    - DCCJConfig/DataManagerError (= 0.1.8)
+    - DCCJConfig/Result (= 0.1.8)
+  - DCCJConfig/DataManagerError (0.1.8)
+  - DCCJConfig/Result (0.1.8)
+  - DCCJNetwork (0.3.7):
+    - DCCJConfig (~> 0.1.8)
+    - SwiftyBeaver
+  - SwiftyBeaver (1.6.0)
 
 DEPENDENCIES:
   - DCCJCashier (from `../`)
@@ -16,15 +18,17 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - DCCJConfig
     - DCCJNetwork
+    - SwiftyBeaver
 
 EXTERNAL SOURCES:
   DCCJCashier:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: 9edc2c73436d22cc303f24bec94dfd79c1ef13fc
-  DCCJConfig: 75489bbacd3d721bf9a995c1081fc40f62295e14
-  DCCJNetwork: 6da503ac0feca2738fc81ea980baa28baeaa61e8
+  DCCJCashier: 7ae94b9e49f55d4318e87ddf5c77da3f041193dd
+  DCCJConfig: a3dd6b8edf21e9a79d45bd0bee5287fa9b2473dc
+  DCCJNetwork: 1e26928bb34af6709be6f39bc985bdaf7935ce47
+  SwiftyBeaver: e45759613e50b522b0e6f53b1f0f14389b45ca34
 
 PODFILE CHECKSUM: 7cca68eccd087dc22bb31fa1e700850fc8e3342f
 
