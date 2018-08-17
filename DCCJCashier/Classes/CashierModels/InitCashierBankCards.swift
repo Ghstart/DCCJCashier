@@ -7,45 +7,24 @@
 
 import Foundation
 
-@objc public class InitCashierBankCardsResponse: NSObject, Codable {
-    let result: InitCashierBankCards?
-    let success: Bool
-    let message: String?
-    init(result: InitCashierBankCards?, success: Bool, message: String?) {
-        self.result = result
-        self.message = message
-        self.success = success
-    }
+public struct InitCashierBankCardsResponse: Codable {
+    public let data: InitCashierBankCards?
+    public let success: Bool
+    public let resultMessage: String?
+    public let resultCode: String
 }
 
-@objc public class InitCashierBankCards: NSObject, Codable {
-    let bankCardInfos: [InitCashierBankCardItem]
-    let phone: String
-    let isMessage: Bool
-    init(bankCardInfos: [InitCashierBankCardItem], phone: String, isMessage: Bool) {
-        self.bankCardInfos = bankCardInfos
-        self.phone = phone
-        self.isMessage = isMessage
-    }
+public struct InitCashierBankCards: Codable {
+    public let bankCardList: [InitCashierBankCardItem]
 }
 
-@objc public class InitCashierBankCardItem: NSObject, Codable {
-    let bankCard: String
-    let bankCardId: String
-    let bankCode: String
-    let bankName: String
-    let isMaintain: Bool
-    let isShow: Bool
-    let isSigned: Bool
-    let payType: String
-    init(bankCard: String, bankCardId: String, bankCode: String, bankName: String, isMaintain: Bool, isShow: Bool, isSigned: Bool, payType: String) {
-        self.bankCard = bankCard
-        self.bankCardId = bankCardId
-        self.bankCode  = bankCode
-        self.bankName = bankName
-        self.isMaintain = isMaintain
-        self.isShow = isShow
-        self.isSigned = isSigned
-        self.payType = payType
-    }
+public struct InitCashierBankCardItem: Codable {
+    public let bankCardDesc: String?
+    public let bankCardID: String
+    public let bankCardNum: String
+    public let bankCode: String?
+    public let bankIcon: String?
+    public let bankName: String
+    public let cardStatus: Int
+    public let cardType: String
 }

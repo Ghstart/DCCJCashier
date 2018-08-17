@@ -14,7 +14,7 @@ import DCCJConfig
 class ViewController: UIViewController {
 
     @IBAction func showBankCardLists(_ sender: Any) {
-        let cashier = DCCJCashier()
+        let cashier = DCCJCashier(net: DCCJNetwork())
         /*present*/
         //cashier.present(page: .bankCardLists, on: self)
         /*navigator*/
