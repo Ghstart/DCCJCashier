@@ -52,7 +52,7 @@ extension CashierRequests: Request {
             case .requestBindCardAndToSupportBankCard:
                 return "/supportedBankCard"
             case .requestCheckPayPassword:
-                return "/payPwdCheck"
+                return "order/payPwdCheck"
             case .requestToPay:
                 return "/payAction"
             case .requestToSurePay:
@@ -65,6 +65,8 @@ extension CashierRequests: Request {
                 return "/sendSms"
             case .confirmBindCard:
                 return "/bindingCardConfirm"
+            case .closeCashier:
+                return "order/closeCashierDesk"
             }
         }
     }

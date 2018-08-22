@@ -22,4 +22,5 @@ public enum CashierRequestTypes {
     case requestBindCard
     case resendMsgCode
     case confirmBindCard
+    case closeCashier
 }
