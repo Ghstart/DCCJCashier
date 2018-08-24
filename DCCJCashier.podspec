@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DCCJCashier'
-  s.version          = '0.4.1'
+  s.version          = '0.4.2'
   s.summary          = 'This is cashier module'
 
 # This description is used to generate tags and improve search results.
@@ -32,9 +32,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DCCJCashier/Classes/**/*'
   
-  #s.resource_bundles = {
-  #  'DCCJCashier' => ['DCCJCashier/Classes/**/**/*.{png,jpeg,jpg,storyboard,xib}']
-  #}
+  s.resource_bundles = {
+    'DCCJCashier' => ['DCCJCashier/Classes/**/**/*.{png,jpeg,jpg,storyboard,xib}']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'

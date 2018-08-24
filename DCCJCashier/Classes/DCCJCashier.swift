@@ -54,9 +54,9 @@ extension CashierRequests: Request {
             case .requestCheckPayPassword:
                 return "order/payPwdCheck"
             case .requestToPay:
-                return "/payAction"
+                return "order/payAction"
             case .requestToSurePay:
-                return "/payConfirm"
+                return "order/payConfirm"
             case .requestBindCardAndCheckCard:
                 return "/checkCard"
             case .requestBindCard:

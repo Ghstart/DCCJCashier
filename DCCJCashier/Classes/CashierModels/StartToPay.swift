@@ -7,26 +7,15 @@
 
 import Foundation
 
-@objc public class StartToPayResponse: NSObject, Codable {
-    let result: StartToPayDetailResponse?
-    let success: Bool
-    let message: String?
-    init(r: StartToPayDetailResponse?, success: Bool, message: String?) {
-        self.result = r
-        self.success = success
-        self.message = message
-    }
+public struct StartToPayResponse: Codable {
+    public let result: StartToPayDetailResponse?
+    public let success: Bool
+    public let message: String?
 }
 
-@objc public class StartToPayDetailResponse: NSObject, Codable {
-    let phone: String
-    let resultCode: String
-    let resultMsg: Int
-    let cmfSeqNo: Int
-    init(phone: String, resultCode: String, resultMsg: Int, cmfSeqNo: Int) {
-        self.phone = phone
-        self.resultCode = resultCode
-        self.resultMsg = resultMsg
-        self.cmfSeqNo = cmfSeqNo
-    }
+public struct StartToPayDetailResponse: Codable {
+    public let phone: String
+    public let resultCode: String
+    public let resultMsg: String
+    public let cmfSeqNo: String
 }

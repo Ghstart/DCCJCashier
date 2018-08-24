@@ -7,13 +7,8 @@
 
 import Foundation
 
-@objc public class CheckPayPasswordResponse: NSObject, Codable {
+public struct CheckPayPasswordResponse: Codable {
     let success: Bool
-    let result: String
+    let result: String?
     let message: String?
-    init(success: Bool, result: String, message: String?) {
-        self.success = success
-        self.result = result
-        self.message = message
-    }
 }
