@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'DCCJNetwork', '~> 0.4.0'
+  s.dependency 'DCCJNetwork', '~> 0.4.1'
   #s.dependency 'DCCJNavigator', '~> 0.1.1'
 end
