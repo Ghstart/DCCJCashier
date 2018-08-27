@@ -38,7 +38,15 @@ extension CashierRequests: Request {
     }
 
     public var host: NetworkEnvironment {
-        return .cashier_staging
+        switch self {
+        case .send(let type, _):
+            switch type {
+            case .checkBankCardBin:
+                return .staging
+            default:
+                return .cashier_staging
+            }
+        }
     }
     
     public var path: String {
@@ -67,6 +75,8 @@ extension CashierRequests: Request {
                 return "/bindingCardConfirm"
             case .closeCashier:
                 return "order/closeCashierDesk"
+            case .checkBankCardBin:
+                return "api/app/Cashier/checkCardBin"
             }
         }
     }
