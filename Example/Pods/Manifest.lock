@@ -1,5 +1,5 @@
 PODS:
-  - DCCJCashier (0.4.8):
+  - DCCJCashier (0.4.9):
     - DCCJNetwork (~> 0.4.1)
   - DCCJConfig (0.2.3):
     - DCCJConfig/DataManagerError (= 0.2.3)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DCCJCashier: e2598b4f1f0fe4f6d597192fbed84cce0adac698
+  DCCJCashier: 1e2179f0ddece5547cdb06a60e312cd8b2b68fe2
   DCCJConfig: dca67365fabf38b598c321627bc87ece2ed097c8
   DCCJNetwork: 247ce77f46efb0d21ea864bc1166a076aab64382
   SwiftyBeaver: e45759613e50b522b0e6f53b1f0f14389b45ca34

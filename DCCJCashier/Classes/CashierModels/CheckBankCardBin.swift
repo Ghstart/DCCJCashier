@@ -20,7 +20,7 @@ public enum CheckBankCardBinTypes: Int, Codable {
     case cunzhe
     case unknow
     
-    var displayName: String {
+    public var displayName: String {
         switch self {
         case .debit:
             return "储蓄卡"
