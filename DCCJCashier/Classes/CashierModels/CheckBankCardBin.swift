@@ -7,6 +7,13 @@
 
 import Foundation
 
+public struct CheckBankCardBinResponse: Codable {
+    public var resultCode: String
+    public var data: CheckBankCardBindDetailResponse?
+    public var resultMessage: String
+    public var success: Bool
+}
+
 public enum CheckBankCardBinTypes: Int, Codable {
     case debit = 1
     case credit
@@ -40,3 +47,4 @@ public struct CheckBankCardBindDetailResponse: Codable {
     public var cardType: CheckBankCardBinTypes
     public var userReservedPhoneNumber: String?
 }
+
