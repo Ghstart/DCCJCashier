@@ -1,6 +1,6 @@
 {
   "name": "DCCJCashier",
-  "version": "0.4.9",
+  "version": "0.5.0",
   "summary": "This is cashier module",
   "description": "This is a cashier modeule. It cares about binding cards, listing bank cards, paying.",
   "homepage": "https://github.com/Ghstart/DCCJCashier",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Ghstart/DCCJCashier.git",
-    "tag": "0.4.9"
+    "tag": "0.5.0"
   },
   "platforms": {
     "ios": "9.0"

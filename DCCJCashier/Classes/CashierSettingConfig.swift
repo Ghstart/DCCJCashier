@@ -13,14 +13,12 @@ public enum CashierPages {
 
 public enum CashierRequestTypes {
     case requestInitCashier
-    case requestCashierSupportBankCards
-    case requestBindCardAndToSupportBankCard
+    case supportBankCards
     case requestCheckPayPassword
     case requestToPay
     case requestToSurePay
     case requestBindCardAndCheckCard
     case requestBindCard
-    case resendMsgCode
     case confirmBindCard
     case closeCashier
     case checkBankCardBin

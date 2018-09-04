@@ -7,24 +7,14 @@
 
 import Foundation
 
-@objc public class CheckCardResponse: NSObject, Codable {
-    let result: CheckCard?
-    let success: Bool
-    let message: String?
-    init(r: CheckCard?, success: Bool, message: String?) {
-        self.result = r
-        self.success = success
-        self.message = message
-    }
+public struct CheckCardResponse: Codable {
+    public let result: CheckCard?
+    public let success: Bool
+    public let message: String?
 }
 
-@objc public class CheckCard: NSObject, Codable {
-    let bankCode: String
-    let bankName: String
-    let cardType: String
-    init(bankCode: String, bankName: String, cardType: String) {
-        self.bankCode = bankCode
-        self.bankName = bankName
-        self.cardType = cardType
-    }
+public struct CheckCard: Codable {
+    public let bankCode: String
+    public let bankName: String
+    public let cardType: String
 }

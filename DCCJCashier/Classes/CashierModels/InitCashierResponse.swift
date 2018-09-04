@@ -52,6 +52,7 @@ public struct InitCashierBankInfosResponse: Codable {
 }
 
 public struct InitCashierDetailResponse: Codable, Equatable {
+    public let bindingPhone: String?
     public let bankCard: String
     public let bankCardId: String
     public let bankCode: String

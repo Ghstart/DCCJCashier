@@ -7,33 +7,19 @@
 
 import Foundation
 
-@objc public class CashierSuppoerBankCardsResponse: NSObject, Codable {
-    let success: Bool
-    let result: CashierSuppoerBankCards?
-    let message: String?
-    init(success: Bool, result: CashierSuppoerBankCards?, message: String?) {
-        self.success = success
-        self.result = result
-        self.message = message
-    }
+public struct CashierSuppoerBankCardsResponse: Codable {
+    public let success: Bool
+    public let result: CashierSuppoerBankCards?
+    public let message: String?
 }
 
-@objc public class CashierSuppoerBankCards: NSObject, Codable {
-    let bankInfos: [CashierSuppoerBankCardItem]
-    init(bankInfos: [CashierSuppoerBankCardItem]) {
-        self.bankInfos = bankInfos
-    }
+public struct CashierSuppoerBankCards: Codable {
+    public let bankInfos: [CashierSuppoerBankCardItem]
 }
 
-@objc public class CashierSuppoerBankCardItem: NSObject, Codable {
-    let bankCode: String
-    let bankName: String
-    let dayAmountLimit: String
-    let singleAmountLimit: String
-    init(bankCode: String, bankName: String, dayAmountLimit: String, singleAmountLimit: String) {
-        self.bankName = bankName
-        self.bankCode = bankCode
-        self.dayAmountLimit = dayAmountLimit
-        self.singleAmountLimit = singleAmountLimit
-    }
+public struct CashierSuppoerBankCardItem: Codable {
+    public let bankCode: String
+    public let bankName: String
+    public let dayAmountLimit: String
+    public let singleAmountLimit: String
 }

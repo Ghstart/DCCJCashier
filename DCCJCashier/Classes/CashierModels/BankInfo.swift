@@ -8,50 +8,27 @@
 
 import Foundation
 
-@objc public class SupportBankCardResponse: NSObject, Codable {
-    let result: SupportBankCard?
-    let success: Bool
-    let message: String?
-    init(r: SupportBankCard?, success: Bool, message: String?) {
-        self.result = r
-        self.success = success
-        self.message = message
-    }
+public struct SupportBankCardResponse: Codable {
+    public let result: SupportBankCard?
+    public let success: Bool
+    public let message: String?
 }
 
-@objc public class SupportBankCard: NSObject, Codable {
-    let authStatus: Int
-    let bankInfos: [DCSingleBindBankInfos]
-    init(au: Int, bankInfos: [DCSingleBindBankInfos]) {
-        self.authStatus = au
-        self.bankInfos = bankInfos
-    }
+public struct SupportBankCard: Codable {
+    public let authStatus: Int
+    public let bankInfos: [DCSingleBindBankInfos]
 }
 
-@objc public class DCSingleBindBankInfos: NSObject, Codable {
-    let validDate: String?
-    let cvv: String?
-    let idCard: String
-    let accountName: String
-    let phone: String
-    let bankCardId: String
-    let cardType: String
-    let bankCardNo: String
-    let bankCode: String
-    let bankName: String
-    let isSupport: Bool
-    
-    init(v: String?, c: String?, idCard: String, acc: String, phone: String, bankCardId: String, cardType: String, bankCardNo: String, bankCode: String, bankName: String, isSupport: Bool) {
-        self.validDate = v
-        self.cvv = c
-        self.idCard = idCard
-        self.accountName = acc
-        self.phone = phone
-        self.bankCardId = bankCardId
-        self.cardType = cardType
-        self.bankCardNo = bankCardNo
-        self.bankCode = bankCode
-        self.bankName = bankName
-        self.isSupport = isSupport
-    }
+public struct DCSingleBindBankInfos: Codable {
+    public let validDate: String?
+    public let cvv: String?
+    public let idCard: String
+    public let accountName: String
+    public let phone: String
+    public let bankCardId: String
+    public let cardType: String
+    public let bankCardNo: String
+    public let bankCode: String
+    public let bankName: String
+    public let isSupport: Bool
 }

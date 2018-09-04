@@ -54,11 +54,9 @@ extension CashierRequests: Request {
         case .send(let type, _):
             switch type {
             case .requestInitCashier:
-                return "order/bankList"
-            case .requestCashierSupportBankCards:
+                return "order/bankcard/list"
+            case .supportBankCards:
                 return "/supportBanks"
-            case .requestBindCardAndToSupportBankCard:
-                return "/supportedBankCard"
             case .requestCheckPayPassword:
                 return "order/payPwdCheck"
             case .requestToPay:
@@ -66,11 +64,9 @@ extension CashierRequests: Request {
             case .requestToSurePay:
                 return "order/payConfirm"
             case .requestBindCardAndCheckCard:
-                return "/checkCard"
+                return "order/checkCard"
             case .requestBindCard:
                 return "/bindingCard"
-            case .resendMsgCode:
-                return "/sendSms"
             case .confirmBindCard:
                 return "/bindingCardConfirm"
             case .closeCashier:
@@ -85,7 +81,7 @@ extension CashierRequests: Request {
         switch self {
         case .send(let type, _):
             switch type {
-            case .requestBindCardAndToSupportBankCard:
+            case .supportBankCards:
                 return .GET
             default:
                 return .POST

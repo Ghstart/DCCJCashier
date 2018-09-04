@@ -8,23 +8,23 @@
 import Foundation
 
 public struct InitCashierBankCardsResponse: Codable {
-    public let data: InitCashierBankCards?
+    public let result: InitCashierBankCards?
     public let success: Bool
-    public let resultMessage: String?
-    public let resultCode: String
 }
 
 public struct InitCashierBankCards: Codable {
-    public let bankCardList: [InitCashierBankCardItem]
+    public let bankInfos: [InitCashierBankCardItem]
 }
 
 public struct InitCashierBankCardItem: Codable {
-    public let bankCardDesc: String?
-    public let bankCardID: String
-    public let bankCardNum: String
-    public let bankCode: String?
-    public let bankIcon: String?
+    public let accountName: String
+    public let bankCardId: String
+    public let bankCardNo: String
+    public let bankCode: String
     public let bankName: String
-    public let cardStatus: Int
     public let cardType: String
+    public let cvv: String?
+    public let idCard: String
+    public let phone: String
+    public let validDate: String?
 }
