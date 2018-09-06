@@ -20,6 +20,6 @@ public struct CashierSuppoerBankCards: Codable {
 public struct CashierSuppoerBankCardItem: Codable {
     public let bankCode: String
     public let bankName: String
-    public let dayAmountLimit: String
-    public let singleAmountLimit: String
+    public let dayAmountLimit: String?
+    public let singleAmountLimit: String?
 }

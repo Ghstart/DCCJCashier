@@ -53,7 +53,7 @@ public struct InitCashierBankInfosResponse: Codable {
 
 public struct InitCashierDetailResponse: Codable, Equatable {
     public let bindingPhone: String?
-    public let bankCard: String
+    public let bankCardNo: String
     public let bankCardId: String
     public let bankCode: String
     public let bankName: String
@@ -65,8 +65,8 @@ public struct InitCashierDetailResponse: Codable, Equatable {
 
 public extension InitCashierDetailResponse {
     public var detailBankCardNumberAndBankName: String {
-        let index = self.bankCard.index(self.bankCard.endIndex, offsetBy: -4)
-        return "\(self.bankName)(尾号\(self.bankCard[index...]))"
+        let index = self.bankCardNo.index(self.bankCardNo.endIndex, offsetBy: -4)
+        return "\(self.bankName)(尾号\(self.bankCardNo[index...]))"
     }
 }
 
