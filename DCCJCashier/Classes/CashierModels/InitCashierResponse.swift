@@ -45,7 +45,7 @@ public extension InitCashierResponse {
 }
 
 public struct InitCashierBankInfosResponse: Codable {
-    public let bankCardInfos: [InitCashierDetailResponse]
+    public let bankCardInfos: [InitCashierDetailResponse]?
     public let otherPayTypeInfoList: [InitCashierOtherPayResponse]
     public let isMessage: Bool
     public let phone: String

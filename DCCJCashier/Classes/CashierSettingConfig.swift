@@ -20,6 +20,10 @@ public enum CashierRequestTypes {
     case requestToSurePay                   // 确认支付
     case requestBindCardAndCheckCard        // 单独绑卡并检查银行卡号
     case requestBindCardAndConfirm          // 单独绑卡并确认
+    case requestBindCardAndSupportedBankCard // 单独绑卡获取支持银行卡列表(基础授信激活使用)
+    case requestBindCardAndBindingCard      // 单独绑卡（会发送短信验证码）
+    case requestBindCardAndSendSms          // 单独绑卡重新发送短信验证码
+    case requestBindCardAndMyBandCardList   // 单独绑卡 所有银行卡列表
     case closeCashier                       // 关闭收银台
     case checkBankCardBin                   // 检查银行卡bin
 }

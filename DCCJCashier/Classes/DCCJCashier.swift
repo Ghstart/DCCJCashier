@@ -69,6 +69,14 @@ extension CashierRequests: Request {
                 return "order/checkCard"
             case .requestBindCardAndConfirm:
                 return "order/bindingCardConfirm"
+            case .requestBindCardAndSupportedBankCard:
+                return "order/supportedBankCard"
+            case .requestBindCardAndSendSms:
+                return "order/sendSms"
+            case .requestBindCardAndMyBandCardList:
+                return "order/bankcard/list"
+            case .requestBindCardAndBindingCard:
+                return "order/bindingCard"
             case .closeCashier:
                 return "order/closeCashierDesk"
             case .checkBankCardBin:
@@ -78,7 +86,15 @@ extension CashierRequests: Request {
     }
     
     public var method: HTTPMethod {
-        return .POST
+        switch self {
+        case .send(let type, _):
+            switch type {
+            case .requestBindCardAndSupportedBankCard:
+                return .GET
+            default:
+                return .POST
+            }
+        }
     }
     
     public var paramters: [String : Any] {

@@ -13,12 +13,12 @@ public struct InitCashierBankCardsResponse: Codable {
 }
 
 public struct InitCashierBankCards: Codable {
-    public let bankInfos: [InitCashierBankCardItem]
+    public let bankInfos: [InitCashierBankCardItem]?
 }
 
 public struct InitCashierBankCardItem: Codable {
     public let accountName: String
-    public let bankCardId: String
+    public let bankCardId: String?
     public let bankCardNo: String
     public let bankCode: String
     public let bankName: String

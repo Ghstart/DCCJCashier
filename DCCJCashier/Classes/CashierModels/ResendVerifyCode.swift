@@ -9,10 +9,10 @@
 import Foundation
 
 @objc public class ResendVerifyCode: NSObject, Codable {
-    let result: ResendMsgCode?
-    let success: Bool
-    let message: String?
-    init(r: ResendMsgCode?, success: Bool, message: String?) {
+    public let result: ResendMsgCode?
+    public let success: Bool
+    public let message: String?
+    public init(r: ResendMsgCode?, success: Bool, message: String?) {
         self.result = r
         self.success = success
         self.message = message
@@ -20,9 +20,9 @@ import Foundation
 }
 
 @objc public class ResendMsgCode: NSObject, Codable {
-    let signReqId: String
-    let phone: String
-    init(signReqId: String, phone: String) {
+    public let signReqId: String
+    public let phone: String
+    public init(signReqId: String, phone: String) {
         self.signReqId = signReqId
         self.phone = phone
     }

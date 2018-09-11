@@ -9,9 +9,9 @@
 import Foundation
 
 @objc public class ConfirmBindCard: NSObject, Codable {
-    let success: Bool
-    let message: String?
-    init(success: Bool, message: String?) {
+    public let success: Bool
+    public let message: String?
+    public init(success: Bool, message: String?) {
         self.success = success
         self.message = message
     }

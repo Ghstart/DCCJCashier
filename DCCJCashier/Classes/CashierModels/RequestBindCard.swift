@@ -9,10 +9,10 @@
 import Foundation
 
 @objc public class RequestBindCard: NSObject, Codable {
-    let result: DCSingelBindCardResponseInfo?
-    let success: Bool
-    let message: String?
-    init(r: DCSingelBindCardResponseInfo?, success: Bool, message: String?) {
+    public let result: DCSingelBindCardResponseInfo?
+    public let success: Bool
+    public let message: String?
+    public init(r: DCSingelBindCardResponseInfo?, success: Bool, message: String?) {
         self.result = r
         self.success = success
         self.message = message
@@ -20,9 +20,9 @@ import Foundation
 }
 
 @objc public class DCSingelBindCardResponseInfo: NSObject, Codable {
-    let phone: String
-    let signReqId: String
-    init(token: String, phone: String, smsSender: String, signReqId: String) {
+    public let phone: String
+    public let signReqId: String
+    public init(token: String, phone: String, smsSender: String, signReqId: String) {
         self.phone = phone
         self.signReqId = signReqId
     }

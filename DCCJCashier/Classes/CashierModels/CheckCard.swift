@@ -18,3 +18,4 @@ public struct CheckCard: Codable {
     public let bankName: String
     public let cardType: String
 }
+

@@ -16,7 +16,7 @@ public struct SupportBankCardResponse: Codable {
 
 public struct SupportBankCard: Codable {
     public let authStatus: Int
-    public let bankInfos: [DCSingleBindBankInfos]
+    public let bankInfos: [DCSingleBindBankInfos]?
 }
 
 public struct DCSingleBindBankInfos: Codable {
