@@ -13,6 +13,7 @@ import DCCJConfig
 public final class DCCJCashier: NSObject {
     
     private let network: DCCJNetwork
+    public static let kSerial = Notification.Name("kSerial")
     
     public init(net: DCCJNetwork) {
         self.network = net
@@ -22,8 +23,24 @@ public final class DCCJCashier: NSObject {
         let (d, t) = self.network.request(with: r)
         
         let unboxData: Future<Value> = d.unboxed()
-        
+        unboxData.observe { (result: Result<Value>) in
+            switch result {
+            case .failure(let e):
+                if let error = e as? DataManagerError {
+                    switch error {
+                    case .customError(let message) where message.code != nil:
+                        if (message.code! == "ROUTE_0007") { self.recreateOrderNumber(baseon: r) }
+                    default: break
+                    }
+                }
+            case .success: break
+            }
+        }
         return (data: unboxData, task: t)
+    }
+    
+    private func recreateOrderNumber(baseon request: CashierRequests) {
+        NotificationCenter.default.post(name: DCCJCashier.kSerial, object: request)
     }
 }
 
